@@ -83,7 +83,7 @@ app.delete("/routines/:id", (req, res) => {
 
 //CREATE a new routine
 app.post("/routine", (req, res) => {
-  const { startDate, endDate, rotineName, routines } = req.body;
+  const { startDate, endDate, routineName, routines } = req.body;
   const queryString =
     "INSERT INTO routinestb (startDate, endDate, rotineName, routines) VALUES (" +
     "'" +
@@ -95,7 +95,7 @@ app.post("/routine", (req, res) => {
     "'" +
     ", " +
     "'" +
-    rotineName +
+    routineName +
     "'" +
     ", " +
     "'" +
@@ -113,13 +113,13 @@ app.post("/routine", (req, res) => {
 
 //UPDATE a single routine
 app.put("/routines/:id", (req, res) => {
-  const { routineId, startDate, endDate, rotineName, routines } = req.body;
+  const { startDate, endDate, routineName, routines } = req.body;
   mysqlConnection.query(
     "UPDATE routinestb SET startDate = ?, endDate = ?, rotineName = ?, routines = ? WHERE routineId = ?",
-    [startDate, endDate, rotineName, routines, Number(req.params.id)],
+    [startDate, endDate, routineName, routines, Number(req.params.id)],
     (error, rows, field) => {
       if (!error) {
-        res.send("Routine: " + req.params.id + " updated successfully");
+        res.send("Routine updated successfully");
       } else {
         console.log(error);
       }
