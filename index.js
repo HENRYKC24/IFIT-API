@@ -115,7 +115,7 @@ app.post("/routine", (req, res) => {
 app.put("/routines/:id", (req, res) => {
   const { startDate, endDate, routineName, routines } = req.body;
   mysqlConnection.query(
-    "UPDATE routinestb SET startDate = ?, endDate = ?, rotineName = ?, routines = ? WHERE routineId = ?",
+    "UPDATE routinestb SET startDate = ?, endDate = ?, routineName = ?, routines = ? WHERE routineId = ?",
     [startDate, endDate, routineName, routines, Number(req.params.id)],
     (error, rows, field) => {
       if (!error) {
