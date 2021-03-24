@@ -32,17 +32,7 @@ const pool = mysql.createPool({
   database: process.env.CLOUD_MYSQL_DATABASE,
 });
 
-//connect mysql database
-// mysqlConnection.getConnection((error) => {
-//   if (!error) {
-//     console.log("Connected successfully to routinesdb!");
-//   } else {
-//     console.log(error);
-//   }
-// });
-
 // GET request for all routines
-
 app.get("/routines", (req, res) => {
   pool.getConnection((error, connection) => {
     if (error) {
@@ -73,13 +63,6 @@ app.get("/", (req, res) => {
       });
     }
   });
-  // mysqlConnection.query("SELECT * FROM routinestb", (error, rows, field) => {
-  //   if (!error) {
-  //     res.send(rows);
-  //   } else {
-  //     console.log(error);
-  //   }
-  // });
 });
 
 //GET request for a single routine
@@ -101,17 +84,6 @@ app.get("/routines/:id", (req, res) => {
       );
     }
   });
-  // mysqlConnection.query(
-  //   "SELECT * FROM routinestb WHERE routineId = ?",
-  //   [req.params.id],
-  //   (error, rows, field) => {
-  //     if (!error) {
-  //       res.send(rows);
-  //     } else {
-  //       console.log(error);
-  //     }
-  //   }
-  // );
 });
 
 //DELETE request for a single routine
@@ -133,18 +105,6 @@ app.delete("/routines/:id", (req, res) => {
       );
     }
   });
-
-  // mysqlConnection.query(
-  //   "DELETE FROM routinestb WHERE routineId = ?",
-  //   [Number(req.params.id)],
-  //   (error, rows, field) => {
-  //     if (!error) {
-  //       res.send("Deleted successfully");
-  //     } else {
-  //       console.log(error);
-  //     }
-  //   }
-  // );
 });
 
 //CREATE a new routine
