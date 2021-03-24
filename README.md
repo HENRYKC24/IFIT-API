@@ -22,3 +22,14 @@ As a developer I need to create the mysql user database.
 As a Developer in need of an API in node where you can do the basic CRUD operations.
 
 As a developer I need to create a component topbar to add to the whole UI
+
+
+# Endpoints
+
+1 GET/READ route =  https://ifit-api.herokuapp.com/   OR  https://ifit-api.herokuapp.com/routines
+
+2 CREATE/POST route = https://ifit-api.herokuapp.com/routine
+
+3 DELETE route = https://ifit-api.herokuapp.com/<routineId>
+
+4 UPDATE/PUT route = https://ifit-api.herokuapp.com/<routinId>

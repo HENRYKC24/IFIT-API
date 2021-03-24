@@ -117,7 +117,7 @@ app.post("/routine", (req, res) => {
     if (!error) {
       res.send("Routine inserted successfully!");
     } else {
-      res.send("An error occurred!");
+      console.log(error);
     }
   });
 });
