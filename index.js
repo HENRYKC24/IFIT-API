@@ -51,6 +51,17 @@ app.get("/routines", (req, res) => {
   });
 });
 
+
+app.get("/", (req, res) => {
+  mysqlConnection.query("SELECT * FROM routinestb", (error, rows, field) => {
+    if (!error) {
+      res.send(rows);
+    } else {
+      console.log(error);
+    }
+  });
+});
+
 //GET request for a single routine
 app.get("/routines/:id", (req, res) => {
   mysqlConnection.query(
