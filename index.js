@@ -96,7 +96,7 @@ app.delete("/routines/:id", (req, res) => {
 app.post("/routine", (req, res) => {
   const { startDate, endDate, routineName, routines } = req.body;
   const queryString =
-    "INSERT INTO routinestb (startDate, endDate, rotineName, routines) VALUES (" +
+    "INSERT INTO routinestb (startDate, endDate, routineName, routines) VALUES (" +
     "'" +
     startDate +
     "'" +
