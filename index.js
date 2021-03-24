@@ -25,10 +25,10 @@ app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 
 // create mysql connection
 const mysqlConnection = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: process.env.MYSQL_PASSWORD,
-  database: "routinesdb",
+  host: process.env.CLOUD_MYSQL_HOST,
+  user: process.env.CLOUD_MYSQL_USER,
+  password: process.env.CLOUD_MYSQL_PASSWORD,
+  database: process.env.CLOUD_MYSQL_DATABASE,
 });
 
 //connect mysql database
