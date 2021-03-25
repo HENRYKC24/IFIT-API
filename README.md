@@ -26,9 +26,9 @@ As a developer I need to create a component topbar to add to the whole UI
 
 # Endpoints
 
-1 GET/READ route =  https://ifit-api.herokuapp.com/   OR  https://ifit-api.herokuapp.com/routines
+1 GET/READ route =  https://ifit-api.herokuapp.com/  
 
-2 CREATE/POST route = https://ifit-api.herokuapp.com/routine
+2 CREATE/POST route = https://ifit-api.herokuapp.com/
 
 3 DELETE route = https://ifit-api.herokuapp.com/<routineId>
 

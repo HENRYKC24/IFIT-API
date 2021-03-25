@@ -24,6 +24,7 @@ app.use(bodyParser.json({ limit: "50mb" }));
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 
 // create remote mysql connection
+
 const pool = mysql.createPool({
   connectionLimit: 20,
   host: process.env.CLOUD_MYSQL_HOST,
@@ -32,7 +33,9 @@ const pool = mysql.createPool({
   database: process.env.CLOUD_MYSQL_DATABASE,
 });
 
+
 // create local mysql connection
+
 // const pool = mysql.createPool({
 //   connectionLimit: 20,
 //   host: process.env.LOCAL_MYSQL_HOST,
@@ -40,27 +43,6 @@ const pool = mysql.createPool({
 //   password: process.env.LOCAL_MYSQL_PASSWORD,
 //   database: process.env.LOCAL_MYSQL_DATABASE,
 // });
-
-// GET request for all routines
-app.get("/routines", (req, res) => {
-  pool.getConnection((error, connection) => {
-    if (error) {
-      console.log(error);
-    } else {
-      connection.query("SELECT * FROM routinestb", (error, rows, field) => {
-        if (!error) {
-          const doctoredRows = rows.map((row) => {
-            row.routines = JSON.parse(row.routines);
-            return row;
-          })
-          res.json(doctoredRows);
-        } else {
-          console.log(error);
-        }
-      });
-    }
-  });
-});
 
 app.get("/", (req, res) => {
   pool.getConnection((error, connection) => {
@@ -83,7 +65,7 @@ app.get("/", (req, res) => {
 });
 
 //GET request for a single routine
-app.get("/routines/:id", (req, res) => {
+app.get("/:id", (req, res) => {
   pool.getConnection((error, connection) => {
     if (error) {
       console.log(error);
@@ -108,7 +90,7 @@ app.get("/routines/:id", (req, res) => {
 });
 
 //DELETE request for a single routine
-app.delete("/routines/:id", (req, res) => {
+app.delete("/:id", (req, res) => {
   pool.getConnection((error, connection) => {
     if (error) {
       console.log(error);
@@ -129,7 +111,7 @@ app.delete("/routines/:id", (req, res) => {
 });
 
 //CREATE a new routine
-app.post("/routine", (req, res) => {
+app.post("/", (req, res) => {
   pool.getConnection((error, connection) => {
     if (error) {
       console.log(error);
@@ -165,7 +147,7 @@ app.post("/routine", (req, res) => {
 });
 
 //UPDATE a single routine
-app.put("/routines/:id", (req, res) => {
+app.put("/:id", (req, res) => {
   pool.getConnection((error, connection) => {
     if (error) {
       console.log(error);
