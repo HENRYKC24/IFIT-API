@@ -1,3 +1,5 @@
+# User Stories 
+
 As a user of the system I require a screen where I can enter my username and password to access the system with normal authentication, facebook and google.
 
 As a User I require a section to be able to recover the password.
@@ -30,9 +32,9 @@ As a developer I need to create a component topbar to add to the whole UI
 
 2 CREATE/POST route = https://ifit-api.herokuapp.com/
 
-3 DELETE route = https://ifit-api.herokuapp.com/<routineId>
+3 DELETE route = https://ifit-api.herokuapp.com/routineId
 
-4 UPDATE/PUT route = https://ifit-api.herokuapp.com/<routinId>
+4 UPDATE/PUT route = https://ifit-api.herokuapp.com/routineId
 
 
 When testing number 2 and 4 above, pass a data structured like the example below:
