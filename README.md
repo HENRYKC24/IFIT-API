@@ -33,3 +33,13 @@ As a developer I need to create a component topbar to add to the whole UI
 3 DELETE route = https://ifit-api.herokuapp.com/<routineId>
 
 4 UPDATE/PUT route = https://ifit-api.herokuapp.com/<routinId>
+
+
+When testing number 2 and 4 above, pass a data structured like the example below:
+
+{
+"startDate": "June 18, 2021",
+"endDate": "June 22, 2021",
+"routineName": "Tough Routine",
+"routines": "[{\"day\":\"Day 1\",\"exercises\":[{\"do\":\"Lunges\",\"series\":3,\"repitition\":\"10-20-30\"},{\"do\":\"Abduction-Abduction\",\"series\":4,\"repitition\":\"15\"},{\"do\":\"Straight Leg Dead Lift\",\"series\":2,\"repitition\":\"10\"},{\"do\":\"Boxing jump deadlift\",\"series\":1,\"repitition\":\"10\"}]},{\"day\":\"Day 2\",\"exercises\":[{\"do\":\"Lunges\",\"series\":3,\"repitition\":\"10-20-30\"},{\"do\":\"Abduction-Abduction\",\"series\":4,\"repitition\":\"15\"},{\"do\":\"Straight Leg Dead Lift\",\"series\":2,\"repitition\":\"10\"},{\"do\":\"Boxing jump deadlift\",\"series\":1,\"repitition\":\"10\"}]},{\"day\":\"Day 3\",\"exercises\":[{\"do\":\"Lunges\",\"series\":3,\"repitition\":\"10-20-30\"},{\"do\":\"Abduction-Abduction\",\"series\":4,\"repitition\":\"15\"},{\"do\":\"Straight Leg Dead Lift\",\"series\":2,\"repitition\":\"10\"},{\"do\":\"Boxing jump deadlift\",\"series\":1,\"repitition\":\"10\"}]},{\"day\":\"Day 4\",\"exercises\":[{\"do\":\"Lunges\",\"series\":3,\"repitition\":\"10-20-30\"},{\"do\":\"Abduction-Abduction\",\"series\":4,\"repitition\":\"15\"},{\"do\":\"Straight Leg Dead Lift\",\"series\":2,\"repitition\":\"10\"},{\"do\":\"Boxing jump deadlift\",\"series\":1,\"repitition\":\"10\"}]}]"
+}
