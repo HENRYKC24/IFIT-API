@@ -23,14 +23,23 @@ app.use(cors());
 app.use(bodyParser.json({ limit: "50mb" }));
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 
-// create mysql connection
+// create remote mysql connection
 const pool = mysql.createPool({
-  connectionLimit: 10,
+  connectionLimit: 20,
   host: process.env.CLOUD_MYSQL_HOST,
   user: process.env.CLOUD_MYSQL_USER,
   password: process.env.CLOUD_MYSQL_PASSWORD,
   database: process.env.CLOUD_MYSQL_DATABASE,
 });
+
+// create local mysql connection
+// const pool = mysql.createPool({
+//   connectionLimit: 20,
+//   host: process.env.LOCAL_MYSQL_HOST,
+//   user: process.env.LOCAL_MYSQL_USER,
+//   password: process.env.LOCAL_MYSQL_PASSWORD,
+//   database: process.env.LOCAL_MYSQL_DATABASE,
+// });
 
 // GET request for all routines
 app.get("/routines", (req, res) => {
@@ -40,7 +49,11 @@ app.get("/routines", (req, res) => {
     } else {
       connection.query("SELECT * FROM routinestb", (error, rows, field) => {
         if (!error) {
-          res.send(rows);
+          const doctoredRows = rows.map((row) => {
+            row.routines = JSON.parse(row.routines);
+            return row;
+          })
+          res.json(doctoredRows);
         } else {
           console.log(error);
         }
@@ -56,7 +69,11 @@ app.get("/", (req, res) => {
     } else {
       connection.query("SELECT * FROM routinestb", (error, rows, field) => {
         if (!error) {
-          res.send(rows);
+          const doctoredRows = rows.map((row) => {
+            row.routines = JSON.parse(row.routines);
+            return row;
+          })
+          res.json(doctoredRows);
         } else {
           console.log(error);
         }
@@ -76,7 +93,11 @@ app.get("/routines/:id", (req, res) => {
         [req.params.id],
         (error, rows, field) => {
           if (!error) {
-            res.send(rows);
+            const doctoredRows = rows.map((row) => {
+              row.routines = JSON.parse(row.routines);
+              return row;
+            })
+            res.json(doctoredRows);
           } else {
             console.log(error);
           }
@@ -113,7 +134,7 @@ app.post("/routine", (req, res) => {
     if (error) {
       console.log(error);
     } else {
-      const { startDate, endDate, routineName, routines } = req.body;
+      const { startDate, endDate, routineName, routines } = (req.body);
       const queryString =
         "INSERT INTO routinestb (startDate, endDate, routineName, routines) VALUES (" +
         "'" +
@@ -136,7 +157,7 @@ app.post("/routine", (req, res) => {
         if (!error) {
           res.send("Routine inserted successfully!");
         } else {
-          console.log(error);
+          res.send(error);
         }
       });
     }
