@@ -57,7 +57,7 @@ app.get("/", (req, res) => {
           //   row.routines = JSON.parse(row.routines);
           //   return row;
           // })
-          res.json(row);
+          res.json(rows);
         } else {
           console.log(error);
         }
