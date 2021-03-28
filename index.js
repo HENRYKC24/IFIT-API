@@ -6,6 +6,8 @@ const bcrypt = require("bcrypt");
 const path = require("path");
 const cors = require("cors");
 
+//Cross Origin Resource Sharing
+
 //set salt rouds for encryption
 const SaltRounds = 10;
 
@@ -158,7 +160,7 @@ app.put("/:id", (req, res) => {
         [startDate, endDate, routineName, routines, Number(req.params.id)],
         (error, rows, field) => {
           if (!error) {
-            res.send("Routine updated successfully");
+            res.send("Routine updated successfully")
           } else {
             console.log(error);
           }
