@@ -53,11 +53,11 @@ app.get("/", (req, res) => {
     } else {
       connection.query("SELECT * FROM routinestb", (error, rows, field) => {
         if (!error) {
-          const doctoredRows = rows.map((row) => {
-            row.routines = JSON.parse(row.routines);
-            return row;
-          })
-          res.send(row);
+          // const doctoredRows = rows.map((row) => {
+          //   row.routines = JSON.parse(row.routines);
+          //   return row;
+          // })
+          res.json(row);
         } else {
           console.log(error);
         }
@@ -77,11 +77,11 @@ app.get("/:id", (req, res) => {
         [req.params.id],
         (error, rows, field) => {
           if (!error) {
-            const doctoredRows = rows.map((row) => {
-              row.routines = JSON.parse(row.routines);
-              return row;
-            })
-            res.json(doctoredRows);
+            // const doctoredRows = rows.map((row) => {
+            //   row.routines = JSON.parse(row.routines);
+            //   return row;
+            // })
+            res.json(rows);
           } else {
             console.log(error);
           }
