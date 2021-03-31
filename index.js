@@ -6,8 +6,6 @@ const bcrypt = require("bcrypt");
 const path = require("path");
 const cors = require("cors");
 
-//Cross Origin Resource Sharing
-
 //set salt rouds for encryption
 const SaltRounds = 10;
 
@@ -45,6 +43,7 @@ const pool = mysql.createPool({
 //   password: process.env.LOCAL_MYSQL_PASSWORD,
 //   database: process.env.LOCAL_MYSQL_DATABASE,
 // });
+// mariaFERNANDA1234& 
 
 app.get("/", (req, res) => {
   pool.getConnection((error, connection) => {
@@ -53,11 +52,15 @@ app.get("/", (req, res) => {
     } else {
       connection.query("SELECT * FROM routinestb", (error, rows, field) => {
         if (!error) {
-          // const doctoredRows = rows.map((row) => {
-          //   row.routines = JSON.parse(row.routines);
-          //   return row;
-          // })
-          res.json(rows);
+          const doctoredRows = rows.map((row) => {
+            try {
+              row.routines = JSON.parse(row.routines);
+            } catch (error) {
+              row.routines = row.routines;
+            }
+            return row;
+          })
+          res.json(doctoredRows);
         } else {
           console.log(error);
         }
@@ -77,11 +80,15 @@ app.get("/:id", (req, res) => {
         [req.params.id],
         (error, rows, field) => {
           if (!error) {
-            // const doctoredRows = rows.map((row) => {
-            //   row.routines = JSON.parse(row.routines);
-            //   return row;
-            // })
-            res.json(rows);
+            const doctoredRows = rows.map((row) => {
+              try {
+                row.routines = JSON.parse(row.routines);
+              } catch (error) {
+                row.routines = row.routines;
+              }
+              return row;
+            })
+            res.json(doctoredRows);
           } else {
             console.log(error);
           }
@@ -119,6 +126,22 @@ app.post("/", (req, res) => {
       console.log(error);
     } else {
       const { startDate, endDate, routineName, routines } = (req.body);
+      try{
+        const tester = JSON.parse(routines);
+        console.log(tester[0].day);
+        if(!tester[0].day || !tester[0].exercises || !tester[0].exercises[0].do || !tester[0].exercises[0].series || !tester[0].exercises[0].repitition) {
+          res.send('Please check routines data format.');
+          return;
+        }
+      } catch (error) {
+        console.log('>>>>', error);
+        res.send('Please check routines data format.');
+        return;
+      }
+      if(!(startDate && endDate && routineName && routines)) {
+        res.send('Please provide startDate, endDate, routineName and routines keys.');
+        return;
+      }
       const queryString =
         "INSERT INTO routinestb (startDate, endDate, routineName, routines) VALUES (" +
         "'" +
@@ -160,7 +183,7 @@ app.put("/:id", (req, res) => {
         [startDate, endDate, routineName, routines, Number(req.params.id)],
         (error, rows, field) => {
           if (!error) {
-            res.send("Routine updated successfully")
+            res.send("Routine updated successfully");
           } else {
             console.log(error);
           }
