@@ -43,6 +43,7 @@ const pool = mysql.createPool({
 //   password: process.env.LOCAL_MYSQL_PASSWORD,
 //   database: process.env.LOCAL_MYSQL_DATABASE,
 // });
+
 // mariaFERNANDA1234& 
 
 app.get("/", (req, res) => {
