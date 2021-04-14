@@ -5,7 +5,7 @@ const bcrypt = require("bcrypt");
 const path = require("path");
 const cors = require("cors");
 const routinesRoutes = require('./routes/routines');
-// const AllErrors = require('./controllers/error');
+const AllErrors = require('./controllers/error');
 
 //set salt rouds for encryption for user login
 const SaltRounds = 10;
@@ -35,17 +35,6 @@ app.put('/:id', routinesRoutes);
 app.put('/routines/:id', routinesRoutes);
 
 //handle errors with middlewares
-app.use((req, res, next) => {
-  const error = new Error('Not found');
-  error.status = 404;
-  next(error);
-});
+app.use(AllErrors.get404);
 
-app.use((error, req, res, next) => {
-  res.status(error.status || 500);
-  res.json({
-    error: {
-      message: error.message,
-    },
-  });
- });
+app.use(AllErrors.get500);

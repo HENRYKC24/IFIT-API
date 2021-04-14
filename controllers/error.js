@@ -5,7 +5,7 @@ AllErrors.get404 = (req, res, next) => {
   next(error);
 };
 
-AllErrors.get404 = (error, req, res, next) => {
+AllErrors.get500 = (error, req, res, next) => {
  res.status(error.status || 500);
  res.json({
    error: {
@@ -14,4 +14,4 @@ AllErrors.get404 = (error, req, res, next) => {
  });
 };
 
-exports = AllErrors;
+module.exports = AllErrors;

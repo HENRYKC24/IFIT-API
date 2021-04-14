@@ -29,15 +29,24 @@ As a developer I need to create a component topbar to add to the whole UI
 # Endpoints
 
 1 GET/READ route =  https://ifit-api.herokuapp.com/  
+  OR https://ifit-api.herokuapp.com/routines
 
-2 CREATE/POST route = https://ifit-api.herokuapp.com/
+2 GET/READ single routine route =  https://ifit-api.herokuapp.com/{routineId}  
+  OR https://ifit-api.herokuapp.com/routines/{routineId}
 
-3 DELETE route = https://ifit-api.herokuapp.com/routineId
+3 CREATE/POST route = https://ifit-api.herokuapp.com/ 
+  OR https://ifit-api.herokuapp.com/routines/
+  //pass the data structure at the bottom of this page to postman when making this call
 
-4 UPDATE/PUT route = https://ifit-api.herokuapp.com/routineId
+4 DELETE route = https://ifit-api.herokuapp.com/{routineId}  
+  OR https://ifit-api.herokuapp.com/routines/{routineId}
+
+5 UPDATE/PUT route = https://ifit-api.herokuapp.com/ 
+  OR https://ifit-api.herokuapp.com/routines/
+  //pass the data structure at the bottom of this page to postman when making this call
 
 
-When testing number 2 and 4 above, pass a data structured like the example below:
+DATA STRUCTURE FOR 3 AND 5 ABOVE:
 
 {
 "startDate": "June 18, 2021",
