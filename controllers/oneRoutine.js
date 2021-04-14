@@ -4,7 +4,6 @@ const SingleRoutine = require("../models/oneRoutine");
 exports.getOneRoutine = async (req, res, next) => {
   try {
     const id = Number(req.params.id);
-    console.log(id);
     const [oneRoutines] = await SingleRoutine.fetchOne(id);
     
 

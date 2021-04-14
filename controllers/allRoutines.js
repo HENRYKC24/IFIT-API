@@ -1,11 +1,14 @@
-// const { restart } = require('nodemon');
+// Controller for getting all the routines
+
+// import all routines data from model
 const AllRoutines = require("../models/allRoutines");
 
+// export the function for getting routines data
 exports.getAllRoutines = async (req, res, next) => {
   try {
     const [allRoutines] = await AllRoutines.fetchAll();
     
-
+    // prepare routines data for json format
     const doctoredRows = allRoutines.map((row) => {
       try {
         row.routines = JSON.parse(row.routines);

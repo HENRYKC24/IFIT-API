@@ -1,10 +1,11 @@
 const db = require("../utils/database");
 
-module.exports = class CreateRoutine {
+module.exports = class EditOneRoutine {
   constructor() {}
 
-  static create(data) {
-    const { startDate, endDate, routineName, routines } = data;
+  static edit(data) {
+    const {startDate, endDate, routineName, routines} = data.body;
+    const id = data.id;
     try {
       const tester = JSON.parse(routines);
       if (
@@ -22,24 +23,9 @@ module.exports = class CreateRoutine {
     if (!(startDate && endDate && routineName && routines)) {
       return "Please provide startDate, endDate, routineName and routines keys.";
     }
-    const queryString =
-      "INSERT INTO routinestb (startDate, endDate, routineName, routines) VALUES (" +
-      "'" +
-      startDate +
-      "'" +
-      ", " +
-      "'" +
-      endDate +
-      "'" +
-      ", " +
-      "'" +
-      routineName +
-      "'" +
-      ", " +
-      "'" +
-      routines +
-      "'" +
-      ")";
-    return db.execute(queryString);
+    return db.execute(
+      "UPDATE routinestb SET startDate = ?, endDate = ?, routineName = ?, routines = ? WHERE routineId = ?",
+      [startDate, endDate, routineName, routines, id]
+    );
   }
 };

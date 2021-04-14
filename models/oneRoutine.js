@@ -7,7 +7,6 @@ module.exports = class OneRoutine {
   }
 
   static fetchOne(id) {
-    console.log(id);
     return db.execute("SELECT * FROM routinestb WHERE routineId = ?", [id]);
   }
 
