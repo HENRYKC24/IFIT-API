@@ -5,8 +5,9 @@ exports.createRoutine = async (req, res, next) => {
   try {
     const data = req.body;
     const response = await CreateRoutine.create(data);
-    
-    res.status(201).json(response);
+    response[0].affectedRows === 1
+      ? res.status(201).json("Routine added successfully.")
+      : res.status(201).json("Please make sure the endpoint is correct.");
   } catch (err) {
     if (!err.statusCode) {
       err.statusCode = 500;
