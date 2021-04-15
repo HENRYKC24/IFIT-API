@@ -36,5 +36,4 @@ app.put('/routines/:id', routinesRoutes);
 
 //handle errors with middlewares
 app.use(AllErrors.get404);
-
 app.use(AllErrors.get500);
