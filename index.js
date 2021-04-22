@@ -31,6 +31,8 @@ app.delete('/:id', routinesRoutes);
 app.delete('/routines/:id', routinesRoutes);
 app.post('/', routinesRoutes);
 app.post('/routines', routinesRoutes);
+app.post('/login', routinesRoutes);
+app.post('/register', routinesRoutes);
 app.put('/:id', routinesRoutes);
 app.put('/routines/:id', routinesRoutes);
 

@@ -6,6 +6,7 @@ const oneRoutineController = require('../controllers/oneRoutine');
 const createRoutineController = require('../controllers/createRoutine');
 const editRoutineController = require('../controllers/editOneRoutine');
 const userLoginController = require('../controllers/userLogin');
+const registerUserController = require('../controllers/registerUser');
 
 const router = express.Router();
 
@@ -19,6 +20,8 @@ router.get('/:id', oneRoutineController.getOneRoutine);
 router.get('/routines/:id', oneRoutineController.getOneRoutine);
 router.post('/', createRoutineController.createRoutine);
 router.post('/routines', createRoutineController.createRoutine);
+router.post('/login', userLoginController.login);
+router.post('/register', registerUserController.register);
 router.put('/:id', editRoutineController.editOneRoutine);
 router.put('/routines/:id', editRoutineController.editOneRoutine);
 
