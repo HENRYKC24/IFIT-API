@@ -33,6 +33,7 @@ app.post('/', routinesRoutes);
 app.post('/routines', routinesRoutes);
 app.post('/login', routinesRoutes);
 app.post('/register', routinesRoutes);
+app.post('/recover', routinesRoutes);
 app.put('/:id', routinesRoutes);
 app.put('/routines/:id', routinesRoutes);
 
