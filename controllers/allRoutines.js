@@ -5,7 +5,9 @@ const AllRoutines = require("../models/allRoutines");
 
 // export the function for getting routines data
 exports.getAllRoutines = async (req, res, next) => {
+  //handle error by using try and catch blocks
   try {
+    //get all the routines as an array of objects
     const [allRoutines] = await AllRoutines.fetchAll();
     
     // prepare routines data for json format
